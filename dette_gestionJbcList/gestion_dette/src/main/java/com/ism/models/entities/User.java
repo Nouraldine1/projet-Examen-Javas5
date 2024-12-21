@@ -1,6 +1,6 @@
 package com.ism.models.entities;
 import com.ism.models.enums.EtatCompte;
-
+import com.ism.models.enums.Role;
 import lombok.*;
 
 @Getter
@@ -13,7 +13,7 @@ public class User {
     private String email;
     private String password;
     private String identifiant;
-    private String role;
+    private Role role;
     private EtatCompte etat;
     private Client client;
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public interface IRepository<T> {
-    T findById(Long id);
+    T findById(long userId);
     List<T> findAll();
     void save(T entity);
     void update(T entity);

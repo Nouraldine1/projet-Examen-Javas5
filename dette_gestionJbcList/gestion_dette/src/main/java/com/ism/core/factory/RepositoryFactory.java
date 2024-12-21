@@ -1,7 +1,6 @@
 package com.ism.core.factory;
 
 import com.ism.repository.IRepository;
-import com.ism.repository.UserListRepository;
 import com.ism.repository.bd.impl.*;
 import com.ism.repository.list.impl.*;
 import com.ism.database.PersistenceConfig;

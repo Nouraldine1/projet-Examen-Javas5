@@ -1,44 +1,74 @@
 package com.ism.services.impl;
 
-import java.util.List;
-
 import com.ism.core.factory.RepositoryFactory;
+import com.ism.models.entities.Client;
 import com.ism.models.entities.User;
+import com.ism.models.enums.EtatCompte;
+import com.ism.models.enums.Role;
 import com.ism.repository.IRepository;
 import com.ism.services.UserService;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
-    private final IRepository<User> userRepository;
-    public Object findAll;
+    private IRepository<User> userRepository;
 
     public UserServiceImpl() {
-        // Obtenir dynamiquement le repository pour User
         this.userRepository = RepositoryFactory.getRepository(User.class);
     }
 
     @Override
-    public User findById(Long id) {
-        return userRepository.findById(id);
-    }
-
-    @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    @Override
-    public void save(User user) {
+    public void createUser(String email, String identifiant, String password, Role role) {
+        User user = new User();
+        user.setEmail(email);
+        user.setIdentifiant(identifiant);
+        user.setPassword(password);
+        user.setRole(role);
+        user.setEtat(EtatCompte.ACTIF);
         userRepository.save(user);
     }
 
     @Override
-    public void update(User user) {
-        userRepository.update(user);
+    public void createUserForClient(Client client, String email, String identifiant, String password, Role role) {
+        User user = new User();
+        user.setEmail(email);
+        user.setIdentifiant(identifiant);
+        user.setPassword(password);
+        user.setRole(role);
+        user.setEtat(EtatCompte.ACTIF);
+        user.setClient(client);
+        userRepository.save(user);
     }
 
     @Override
-    public void delete(Long id) {
-        userRepository.delete(id);
+    public void activateUser(int userId) {
+        User user = userRepository.findById(userId);
+        if (user != null) {
+            user.setEtat(EtatCompte.ACTIF);
+            userRepository.save(user);
+        }
     }
-    
+
+    @Override
+    public void deactivateUser(int userId) {
+        User user = userRepository.findById(userId);
+        if (user != null) {
+            user.setEtat(EtatCompte.INACTIF);
+            userRepository.save(user);
+        }
+    }
+
+    @Override
+    public List<User> listActiveUsers() {
+        return userRepository.findAll().stream()
+                .filter(user -> user.getEtat() == EtatCompte.ACTIF)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<User> listUsersByRole(Role role) {
+        return userRepository.findAll().stream()
+                .filter(user -> user.getRole() == role)
+                .collect(Collectors.toList());
+    }
 }

@@ -1,15 +1,17 @@
 package com.ism.models.entities;
 import lombok.*;
-
+import com.ism.models.entities.User;;
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor  
 public class Client {
-    private String id;
+    private long id;
     private String nom;
     private String telephone;
-    private String adresses;
-    private double montantCountTotalDu;
+    private String adresse;
+    private double MontantTotalDu;
+    private User user;
+
 
 }

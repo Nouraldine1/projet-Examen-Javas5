@@ -1,7 +1,7 @@
 package com.ism.models.entities;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.ism.models.enums.PaiementEtat;
 @Getter
@@ -11,7 +11,8 @@ import com.ism.models.enums.PaiementEtat;
 public class Paiement {
     private int idPaiement;
     private double montant;
-    private Date date;
+    private LocalDate date;
     private PaiementEtat etat;
+    private Dette dette;
     
 }

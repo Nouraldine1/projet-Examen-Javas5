@@ -1,6 +1,8 @@
 package com.ism.models.entities;
 
 import lombok.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ism.models.enums.DetteEtat;
@@ -11,6 +13,7 @@ import com.ism.models.enums.DetteEtat;
 @NoArgsConstructor
 public class Dette {
     private int id ;
+    private LocalDate date;
     private double montantTotal;
     private double montantVerse;
     private double montantRestant;

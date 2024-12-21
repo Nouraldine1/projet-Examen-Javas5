@@ -1,0 +1,3 @@
+app:
+  repository: jpa  # Peut être "list", "bd" ou "jpa"
+  persistence-unit: persistenceUnitJPA  # Spécifie l'unité de persistence à utiliser

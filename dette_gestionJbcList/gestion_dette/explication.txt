@@ -1,0 +1,13 @@
+Map en Java
+Une Map est une structure de données en Java qui permet de stocker des paires clé-valeur.
+Elle est utilisée pour associer une clé unique à une valeur.
+
+La méthode put
+La méthode put permet d'ajouter ou de mettre à jour une entrée (clé-valeur) dans une Map.
+
+
+throws--Signalement des erreurs SQL-- Cela force le développeur à gérer les erreurs-- 
+SQLException indique que la méthode peut lancer une exception liée aux opérations SQL. 
+Si une erreur survient pendant l'exécution d'une requête SQL, une exception de type 
+SQLException sera générée. Cela permet à l'utilisateur de gérer ces erreurs 
+avec des blocs try-catch.
